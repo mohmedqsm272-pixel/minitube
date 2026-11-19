@@ -8,6 +8,7 @@ const app = express();
 
 app.use(cors());
 app.use(express.json());
+app.use(express.static(__dirname));
 
 const API_KEY = process.env.YOUTUBE_API_KEY;
 
@@ -57,6 +58,6 @@ app.get("/api/search", async (req, res) => {
     }
 });
 
-app.listen(3000, () => {
+app.listen(process.env.PORT || 3000, "0.0.0.0", () => {
     console.log("MiniTube server running on port 3000");
 });
